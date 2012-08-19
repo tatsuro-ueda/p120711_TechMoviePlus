@@ -21,6 +21,8 @@
 @property (strong) NSArray *itemsArray;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)showSetting:(id)sender;
+
 - (void)reloadFromContentsOfURLsFromArray:(NSArray *)urlsArray;
 - (NSArray *)itemsArrayFromContentsOfURL:(NSURL *)url;
 - (NSURL *)urlAtIndex:(NSInteger)index;

@@ -401,4 +401,12 @@ static NSInteger dateDescending(id item1, id item2, void *context)
     }
 }
 
+- (IBAction)showSetting:(id)sender {
+    [self performSegueWithIdentifier:@"showSetting" sender:_tagString];
+}
+
+- (IBAction)refresh:(id)sender {
+    [self requestTableData];
+}
+
 @end

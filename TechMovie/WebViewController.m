@@ -49,7 +49,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // 動画なので回転に対応するが上下反対はアウト
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

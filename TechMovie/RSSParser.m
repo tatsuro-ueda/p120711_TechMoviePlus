@@ -169,16 +169,22 @@ didStartElement:(NSString *)elementName
         NSURL *url = [NSURL URLWithString:string];
         [[self currentEntry] setUrl:url];
         
-        for (RSSEntry *entry in _oldFeeds) {
-            if ([url isEqual:entry.url]) {
-                [[self currentEntry] setDate:entry.date];
-                [[self currentEntry] setText:entry.text];
-                [[self currentEntry] setOgImageURL:entry.ogImageURL];
-                [[self currentEntry] setIsNewEntry:NO];
-                return;
-            }
-            [[self currentEntry] setIsNewEntry:YES];
+        if (_oldFeeds.count == 0) {
+            [self currentEntry].isNewEntry = YES;
         }
+        else {
+            for (RSSEntry *entry in _oldFeeds) {
+                if ([url isEqual:entry.url]) {
+                    [[self currentEntry] setDate:entry.date];
+                    [[self currentEntry] setText:entry.text];
+                    [[self currentEntry] setOgImageURL:entry.ogImageURL];
+                    [[self currentEntry] setIsNewEntry:NO];
+                    return;
+                }
+                [[self currentEntry] setIsNewEntry:YES];
+            }
+        }
+
         if (![[self currentEntry] ogImageURL]) {
 
             // 該当ページのog:imageを取得する
